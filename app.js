@@ -1,3 +1,6 @@
+/**
+ * Module dependencies.
+ */
 const express= require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
@@ -5,11 +8,23 @@ const path = require('path');
 const chalk = require('chalk');
 const session = require('express-session');
 
-
+/**
+ * Controllers (route handlers).
+ */
 const testController = require('./controllers/test');
+const homeController = require('./controllers/home');
+const signInController = require('./controllers/signIn');
+const signUpController = require('./controllers/signUp');
+const dashboardController = require('./controllers/dashboard');
 
+/**
+ * Create Express server.
+ */
 const app = express();
 
+/**
+ * Express configuration.
+ */
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -27,8 +42,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // }));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-
+/**
+ * Test App Routes.
+ */
 app.get('/test', testController.test);
+
+/**
+ * Home App Routes.
+ */
+app.get('/', homeController.index);
+
+/**
+ * SignIn App Routes.
+ */
+app.get('/signin', signInController.getSignIn);
+
+/**
+ * SignUp App Routes.
+ */
+app.get('/signup', signUpController.getSignUp);
 
 
 
