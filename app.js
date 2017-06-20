@@ -56,6 +56,16 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
+app.all('/*', function(req, res, next) {
+    console.log(req.method + ' '+ req.url);
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+    next();
+});
+
 /**
  * Test App Routes.
  */
@@ -70,6 +80,7 @@ app.get('/', homeController.index);
  * SignIn App Routes.
  */
 app.get('/signin', signInController.getSignIn);
+app.post('/signin', signInController.postSignIn);
 
 /**
  * SignUp App Routes.

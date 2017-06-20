@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     pid: {type: String, unique: true},
     name: String,
+    username: String,
     age: String,
     gender: String,
     govtId: String,
@@ -11,6 +12,6 @@ const userSchema = new mongoose.Schema({
     noOfTrips: String,
     tids: Array,
     rating: String
-});
+}, {collection: 'users'});
 const User = mongoose.model('User', userSchema);
 module.exports = User;

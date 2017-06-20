@@ -18,6 +18,6 @@ const groupSchema = new mongoose.Schema({
     maxAge: String,
     minStart: String,
     maxStart: String
-});
+}, {collection: 'groups'});
 const Group = mongoose.model('Group', groupSchema);
 module.exports = Group;
