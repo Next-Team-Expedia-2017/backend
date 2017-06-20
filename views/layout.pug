@@ -3,8 +3,9 @@ html
     head
       title Travel Collaborator
       block scripts
-        script(src='public/css/lib/bootstrap/bootstrap.css')
+        link(rel='stylesheet' href='/css/lib/bootstrap/bootstrap.css')
     body
-        block content
-        #footer
-          p demo footer
+        .container
+          block content
+        .footer.navbar-fixed-bottom.text-center(style='background-color:grey;height:100px')
+        
