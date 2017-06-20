@@ -4,8 +4,24 @@ html
     title.
         Sign In Page
     body
-        a(class='button') Username
-        a(class='button') Password
+
+        block content
+
+            .main-container
+
+                form(method = 'POST')
+                    div.form-group
+                        label(for = 'name') Name:
+                        input#name.form-control(type = "text", name = "name")
+
+                    div.form-group
+                        label(for = 'password') Password:
+                        input#password.form-control(type = "password")
+
+                    button.btn.btn-primary(type = "submit") Sign In
+
+
+
 
 
 
