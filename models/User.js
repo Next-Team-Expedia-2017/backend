@@ -1,23 +1,12 @@
 const userSchema = new mongoose.Schema({
-  email: { type: String, unique: true },
-  password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  steam: String,
-  tokens: Array,
-
-  profile: {
+    pid: {type: String, unique: true},
     name: String,
+    age: String,
     gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
-}, { timestamps: true });
+    govtId: String,
+    email: String,
+    phone: String,
+    noOfTrips: String,
+    tids: Array,
+    rating: String
+});
