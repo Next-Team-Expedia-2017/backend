@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 
 const groupSchema = new mongoose.Schema({
-    gid: {type: String, unique: true},
-    tid: String,
+    gid: {type: Number, unique: true},
+    tid: Number,
     destination: String,
-    noOfPeople: String,
+    noOfPeople: Number,
     people: [{
-        pid: String,
+        pid: Number,
         startDate: String,
         endDate: String,
-        pel: String,
-        status: String,
+        pel: Number,
+        status: Number,
         approvedBy: Array,
-        approvedRequired: String
+        approvedRequired: Number
     }],
-    minAge: String,
-    maxAge: String,
+    minAge: Number,
+    maxAge: Number,
     minStart: String,
     maxStart: String
 }, {collection: 'groups'});

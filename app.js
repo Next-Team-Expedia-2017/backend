@@ -10,6 +10,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const config = require('./config/config');
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 /**
  * Controllers (route handlers).
@@ -30,6 +31,7 @@ const app = express();
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(config.MONGODB_URI);
+autoIncrement.initialize(mongoose.connection);
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));

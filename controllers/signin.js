@@ -20,8 +20,8 @@ exports.postSignIn = (req, res) => {
             res.redirect("/signin?message=User%20Doesn%27t%20Exist");
         } else {
             // User exist
-            // console.log(userdb);
             req.session.user = userdb;
+            console.log(userdb.name + " logged in.");
             res.redirect('/dashboard');
         }
     });
