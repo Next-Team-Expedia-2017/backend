@@ -1,3 +1,3 @@
-exports.getSignIn = (res, req) => {
+exports.getSignIn = (req, res) => {
     res.render('signin', {});
 }

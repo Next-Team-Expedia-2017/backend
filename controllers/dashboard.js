@@ -1,3 +1,3 @@
-exports.getDashboard = (res, req) => {
+exports.getDashboard = (req, res) => {
     res.render('dashboard', {});
 }
