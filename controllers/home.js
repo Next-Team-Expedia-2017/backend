@@ -1,4 +1,3 @@
-exports.index = (res, req) => {
+exports.index = (req, res) => {
     res.render('home', {});
 }
-2

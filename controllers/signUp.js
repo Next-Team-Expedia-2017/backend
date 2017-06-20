@@ -1,9 +1,9 @@
 const User = require('../models/User');
 
-exports.getSignUp = (res, req) => {
+exports.getSignUp = (req, res) => {
     res.render('signup', {});
 }
 
-exports.postSignUp = (res, req) => {
-
+exports.postSignUp = (req, res) => {
+    console.log(res.body.id);
 }
