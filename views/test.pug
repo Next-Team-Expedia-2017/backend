@@ -2,22 +2,25 @@ extends layout.pug
 
 block content
 
-    form(method = 'POST')
-        div.form-group
-            label(for = 'name') Name:
-            input#name.form-control(type = "text", name = "name")
+    .main-container
+        form(method = 'POST')
+            div.form-group
+                label(for = 'name') Name:
+                input#name.form-control(type = "text", name = "name")
 
-        div.form-group
-            label(for = 'password') Password:
-            input#password.form-control(type = "password")
+            div.form-group
+                label(for = 'age') Age:
+                input#age.form-control(type = "number" name = "age")
 
-        button.btn.btn-primary(type = "submit") Sign In
+            div.form-group
+                label(for = 'gender') Gender:
+                input#gender.form-control(type = "text" name = "gender")
 
+            div.form-group
+                label(for = 'ph_number') Ph.Number:
+                input#number.form-control(type = "number" name = "ph_number")
 
-
-
-
-
+            button.btn.btn-primary(type = "submit") Sign In
 
 
 
