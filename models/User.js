@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const userSchema = new mongoose.Schema({
     pid: {type: String, unique: true},
     name: String,
@@ -10,3 +12,5 @@ const userSchema = new mongoose.Schema({
     tids: Array,
     rating: String
 });
+const User = mongoose.model('User', userSchema);
+module.exports = User;
