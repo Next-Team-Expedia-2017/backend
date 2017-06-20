@@ -1,3 +1,3 @@
 exports.test = (req, res) => {
-    res.render('test', {title: "tasfasf"});
+    res.render('test', {title: "Test"});
 }
