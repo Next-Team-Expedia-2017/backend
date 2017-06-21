@@ -9,10 +9,10 @@ block content
         h1.display-4.m-b-2.text-center Sign Up
 
         // register form
-        form(method='POST' action='/register')
+        form(method='POST' action='/signup')
           div.form-group
             label(for='name') Name:
-            input#name.form-control(type='text', placeholder='Name' name='name')
+            input#name.form-control(type='text', placeholder='name' name='name')
           div.form-group
             label(for='username') Username:
             input#username.form-control(type='text', placeholder='username' name='username')
@@ -20,12 +20,15 @@ block content
             label(for='email') Email:
             input#email.form-control(type='email', placeholder='name@email.com' name='email')
           div.form-group
-            label(for='Gender') Username:
-            input#gender.form-control(type='text', placeholder='male/female/other' name='gender')
+            label(for='gender') Gender:
+            input#gender.form-control(type='text', placeholder='male/female' name='gender')
           div.form-group
-            label(for='Age') Username:
-            input#age.form-control(type='text', placeholder='Age' name='age')
+            label(for='age') Age:
+            input#age.form-control(type='text', placeholder='age' name='age')
           div.form-group
-            label(for='govtID') Username:
-            input#govtID.form-control(type='text', placeholder='govtID' name='govtID')
-        button.btn.btn-primary(type='submit') Sign Up
+            label(for='Phone') Phone:
+            input#phone.form-control(type='text', placeholder='phone' name='phone')
+          div.form-group
+            label(for='govtId') Government Id:
+            input#govtId.form-control(type='text', placeholder='govtId' name='govtId')
+          input.btn.btn-info(type='submit' name="submit")

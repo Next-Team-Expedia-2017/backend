@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+    h2 Your new Trip is created.
+    h3 Details of your new Trip are:
+    ul
+        li= "Destination: "+groupQuery.destination
+        li= "Minimum Start Date: "+groupQuery.minStart
+        li= "Maximum End Date: "+groupQuery.maxEnd
+        li= "Minimum Age: "+user.age
+        li= "Maximum Age: "+user.age
+
+    hr

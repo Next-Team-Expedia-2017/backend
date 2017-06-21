@@ -20,6 +20,10 @@ const homeController = require('./controllers/home');
 const signInController = require('./controllers/signIn');
 const signUpController = require('./controllers/signUp');
 const dashboardController = require('./controllers/dashboard');
+const authenticateController = require('./controllers/authenticate');
+const searchController = require('./controllers/search');
+const groupController = require('./controllers/group');
+const tripController = require('./controllers/trip');
 
 /**
  * Create Express server.
@@ -60,7 +64,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 
 app.all('/*', function(req, res, next) {
     console.log(req.method + ' '+ req.url);
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'text/html');
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -74,7 +78,7 @@ app.all('/*', function(req, res, next) {
 app.get('/test', testController.test);
 
 /**
- * Home App Routes.
+ * Home App Routes. (Index Page)
  */
 app.get('/', homeController.index);
 
@@ -85,15 +89,36 @@ app.get('/signin', signInController.getSignIn);
 app.post('/signin', signInController.postSignIn);
 
 /**
- * SignUp App Routes.
+ * SignUp App Routes. (Sign Up Page)
  */
 app.get('/signup', signUpController.getSignUp);
 app.post('/signup', signUpController.postSignUp);
 
 /**
- * Dashboard App Routes.
+ * Dashboard App Routes. (Main Screen After Person Logins)
  */
-app.get('/dashboard', dashboardController.getDashboard);
+app.get('/dashboard', authenticateController.isAuthenticated, dashboardController.getDashboard);
+app.post('/dashboard', authenticateController.isAuthenticated, dashboardController.postDashboard);
+
+
+/**
+ * Search App Routes.  (Search Results Page)
+ */
+app.get('/search', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, searchController.getSearch);
+app.post('/search', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, searchController.postSearch);
+
+/**
+ * Group App Routes. (Every Group Page)
+ */
+app.get('/group/new', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, groupController.getNewGroup);
+app.get('/group/newtrip', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, groupController.getNewTrip);
+app.get('/group/:id', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, groupController.addToWhichTrip);
+app.get('/group/:groupId/:tripId', authenticateController.isAuthenticated, authenticateController.isQueryGivenForGroup, groupController.addGroupToExistingTrip);
+
+/**
+ * Trip. (plus groups in a trip)
+ */
+app.get('/trips', authenticateController.isAuthenticated, tripController.getTrips);
 
 
 

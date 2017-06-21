@@ -1,0 +1,17 @@
+extends layout.pug
+
+block content
+    h2 Add to which trip |
+        a(href="/group/newtrip?groupId="+(groupId)) NEW
+    ul
+        each tid, index in user.tids
+            li
+                a(href="/group/"+(groupId)+'/'+(tid.tid)) Add
+            ul
+                each gid, index in tid.gids
+                    li= "Destination: "+ gid.destination
+                    li= "No. of People: "+ gid.noOfPeople
+                    li= "Min Age: "+ gid.minAge
+                    li= "Max Age: "+ gid.maxAge
+                    li= "Min Start: "+ gid.minStart
+                    li= "Max End: "+ gid.maxEnd

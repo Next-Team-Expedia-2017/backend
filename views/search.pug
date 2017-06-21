@@ -1,0 +1,30 @@
+extends layout.pug
+
+block content
+    h3
+        a(href="/group/new") Make a new Group
+    ul
+        each group, index in groups
+            li
+                span= "Group number: " + (index+1)
+                a(href="/group/"+(group.gid))= " Add yourself to group"
+            ul
+                li= "Destination: "+group.destination
+                li= "Number of People: "+group.noOfPeople
+                li= "Details about people"
+                ul
+                    each people, index in group.people
+                        li= "Person "+ (index+1)
+                        ul
+                            li= "Name: " + people.details.name
+                            li= "Username: " + people.details.username
+                            li= "Age: " + people.details.age
+                            li= "Gender: " + people.details.gender
+                            li= "Email: " + people.details.email
+                            li= "Phone: " + people.details.phone
+                            li= "Rating: " + people.details.rating
+                            li= "Number of Trips that person is in: " + people.details.noOfTrips
+                li= "Minimum Age of Person in group: "+group.minAge
+                li= "Maximum Age of Person in group: "+group.maxAge
+                li= "Minimum Start Date in group: "+group.minStart
+                li= "Maximum End Date in group: "+group.maxEnd

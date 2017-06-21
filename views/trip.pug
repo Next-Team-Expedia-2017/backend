@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+    h2 Your trips
+    hr
+    ul
+        each tid, index in user.tids
+            li Trip number #{index+1}
+            ul
+                each gid, index in tid.gids
+                    li= "Destination: "+ gid.destination
+                    li= "No. of People: "+ gid.noOfPeople
+                    li= "Min Age: "+ gid.minAge
+                    li= "Max Age: "+ gid.maxAge
+                    li= "Min Start: "+ gid.minStart
+                    li= "Max End: "+ gid.maxEnd

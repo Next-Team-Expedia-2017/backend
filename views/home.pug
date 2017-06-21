@@ -1,13 +1,8 @@
-doctype
-html
-    head
-    body
-        h1 Signup Page
-        p Enter your username
+extends layout.pug
 
-        block content
-
-
-
-            a(href="create")
-               button(type="button") SignIn
+block content
+    a(href="create")
+       a(href="signin" class="btn btn-info" role="button") Sign In
+       .clear(style="clear:both;")
+       h1 Travel Collaborator
+       a(href="signup" class="btn btn-info" role="button") Sign Up
